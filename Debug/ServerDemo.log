@@ -1,0 +1,15 @@
+﻿  Server.cpp
+C:\Users\Huy Do\source\repos\ServerDemo\ServerDemo\Server.cpp(46,1): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winsock2.h(1849): message : see declaration of 'inet_ntoa'
+Server.obj : error LNK2019: unresolved external symbol __imp__accept@12 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__bind@12 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__closesocket@4 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__htonl@4 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__htons@4 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__inet_ntoa@4 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__listen@8 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__recv@16 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__socket@12 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__WSAStartup@8 referenced in function _main
+Server.obj : error LNK2019: unresolved external symbol __imp__WSACleanup@0 referenced in function _main
+C:\Users\Huy Do\source\repos\ServerDemo\Debug\Server.exe : fatal error LNK1120: 11 unresolved externals
