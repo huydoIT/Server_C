@@ -30,48 +30,48 @@ void randStr(char result[10], int number)
 }
 int
 main() {
-	/* ポ�Eト番号、ソケチE�� */
+	/* 繝昴・繝育分蜿ｷ縲√た繧ｱ繝・ヨ */
 	unsigned short port = 9876;
-	int srcSocket;  // 自刁E
-	int dstSocket;  // 相扁E
+	int srcSocket;  // 閾ｪ蛻・
+	int dstSocket;  // 逶ｸ謇・
 
-	/* sockaddr_in 構造佁E*/
+	/* sockaddr_in 讒矩菴・*/
 	struct sockaddr_in srcAddr;
 	struct sockaddr_in dstAddr;
 	int dstAddrSize = sizeof(dstAddr);
 
-	/* 吁E��パラメータ */
+	/* 蜷・ｨｮ繝代Λ繝｡繝ｼ繧ｿ */
 	int numrcv;
 	char buffer[BUFFER_SIZE] = { 0 };
 	srand(time(NULL));
 	/************************************************************/
-	/* Windows 独自の設宁E*/
+	/* Windows 迢ｬ閾ｪ縺ｮ險ｭ螳・*/
 	WSADATA data;
 	WSAStartup(MAKEWORD(2, 0), &data);
 
-	/* sockaddr_in 構造体�EセチE�� */
+	/* sockaddr_in 讒矩菴薙・繧ｻ繝・ヨ */
 	memset(&srcAddr, 0, sizeof(srcAddr));
 	srcAddr.sin_port = htons(port);
 	srcAddr.sin_family = AF_INET;
 	srcAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	/* ソケチE��の生�E */
+	/* 繧ｽ繧ｱ繝・ヨ縺ｮ逕滓・ */
 	srcSocket = socket(AF_INET, SOCK_STREAM, 0);
 
-	/* ソケチE��のバインチE*/
+	/* 繧ｽ繧ｱ繝・ヨ縺ｮ繝舌う繝ｳ繝・*/
 	bind(srcSocket, (struct sockaddr*) & srcAddr, sizeof(srcAddr));
 
-	/* 接続�E許可 */
+	/* 謗･邯壹・險ｱ蜿ｯ */
 	listen(srcSocket, 1);
 
-	/* 接続�E受付け */
+	/* 謗･邯壹・蜿嶺ｻ倥￠ */
 	printf("============= SERVER =============\n");
 	printf("Waiting for connection ...\n");
 
 	dstSocket = accept(srcSocket, (struct sockaddr*) & dstAddr, &dstAddrSize);
 	printf("Client IP: %s\n", inet_ntoa(dstAddr.sin_addr));
 
-	/* パケチE��受信 */
+	/* 繝代こ繝・ヨ蜿嶺ｿ｡ */
 	while (1) {
 		numrcv = recv(dstSocket, buffer, BUFFER_SIZE, 0);
 		if (numrcv == -1 || numrcv == 0) {
@@ -90,10 +90,10 @@ main() {
 			randStr(str, 3);
 			send(dstSocket, str, strlen(str), 0);
 		}
-		printf("ABCDA\n");
+		
 	}
 	closesocket(dstSocket);
 	printf("Exit!\n");
-	/* Windows 独自の設宁E*/
+	/* Windows 迢ｬ閾ｪ縺ｮ險ｭ螳・*/
 	WSACleanup();
 }
