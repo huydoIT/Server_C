@@ -90,6 +90,7 @@ main() {
 			randStr(str, 3);
 			send(dstSocket, str, strlen(str), 0);
 		}
+		printf("ABCDA\n");
 	}
 	closesocket(dstSocket);
 	printf("Exit!\n");
