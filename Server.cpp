@@ -30,48 +30,48 @@ void randStr(char result[10], int number)
 }
 int
 main() {
-	/* 繝昴・繝育分蜿ｷ縲√た繧ｱ繝・ヨ */
+	/* 繝昴・繝育刁E���E�縲√た繧�E�繝�Eヨ */
 	unsigned short port = 9876;
-	int srcSocket;  // 閾ｪ蛻・
-	int dstSocket;  // 逶ｸ謇・
+	int srcSocket;  // 閾�E�蛻・
+	int dstSocket;  // 逶�E�謁E�E
 
 	/* sockaddr_in 讒矩菴・*/
 	struct sockaddr_in srcAddr;
 	struct sockaddr_in dstAddr;
 	int dstAddrSize = sizeof(dstAddr);
 
-	/* 蜷・ｨｮ繝代Λ繝｡繝ｼ繧ｿ */
+	/* 蜷・�E��E�繝代Λ繝｡繝ｼ繧�E� */
 	int numrcv;
 	char buffer[BUFFER_SIZE] = { 0 };
 	srand(time(NULL));
 	/************************************************************/
-	/* Windows 迢ｬ閾ｪ縺ｮ險ｭ螳・*/
+	/* Windows 迢�E�閾�E�縺�E�險�E�螳・*/
 	WSADATA data;
 	WSAStartup(MAKEWORD(2, 0), &data);
 
-	/* sockaddr_in 讒矩菴薙・繧ｻ繝・ヨ */
+	/* sockaddr_in 讒矩菴薙�E繧�E�繝�Eヨ */
 	memset(&srcAddr, 0, sizeof(srcAddr));
 	srcAddr.sin_port = htons(port);
 	srcAddr.sin_family = AF_INET;
 	srcAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	/* 繧ｽ繧ｱ繝・ヨ縺ｮ逕滓・ */
+	/* 繧�E�繧�E�繝�Eヨ縺�E�逕滓�E */
 	srcSocket = socket(AF_INET, SOCK_STREAM, 0);
 
-	/* 繧ｽ繧ｱ繝・ヨ縺ｮ繝舌う繝ｳ繝・*/
+	/* 繧�E�繧�E�繝�Eヨ縺�E�繝�EぁE��ｳ繝�E*/
 	bind(srcSocket, (struct sockaddr*) & srcAddr, sizeof(srcAddr));
 
-	/* 謗･邯壹・險ｱ蜿ｯ */
+	/* 謗･邯壹・險�E�蜿�E� */
 	listen(srcSocket, 1);
 
-	/* 謗･邯壹・蜿嶺ｻ倥￠ */
+	/* 謗･邯壹・蜿嶺�E�倥�E� */
 	printf("============= SERVER =============\n");
 	printf("Waiting for connection ...\n");
 
 	dstSocket = accept(srcSocket, (struct sockaddr*) & dstAddr, &dstAddrSize);
 	printf("Client IP: %s\n", inet_ntoa(dstAddr.sin_addr));
 
-	/* 繝代こ繝・ヨ蜿嶺ｿ｡ */
+	/* 繝代こ繝�Eヨ蜿嶺�E��E� */
 	while (1) {
 		numrcv = recv(dstSocket, buffer, BUFFER_SIZE, 0);
 		if (numrcv == -1 || numrcv == 0) {
@@ -94,6 +94,6 @@ main() {
 	}
 	closesocket(dstSocket);
 	printf("Exit!\n");
-	/* Windows 迢ｬ閾ｪ縺ｮ險ｭ螳・*/
+	/* Windows 迢�E�閾�E�縺�E�險�E�螳・*/
 	WSACleanup();
 }
