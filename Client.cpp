@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
@@ -41,6 +42,8 @@ main() {
 	int status;
 	int numsnt;
 	/************************************************************/
+	double time_spent = 0.0;
+
 
 	/* Windows 独自の設宁E*/
 	WSADATA data;
@@ -71,10 +74,13 @@ main() {
 		printf("Input messages: ");
 		scanf("%s", &str);
 		int cnt = 0;
-		while (cnt <= 45)
+		clock_t begin = clock();
+		while (cnt <= 90)
 		{
-			send(dstSocket, str, strlen(str) + 1, 0);
-			Sleep(10);
+			for (int i = 0; i < 10; i++) {
+				send(dstSocket, str, strlen(str) + 1, 0);
+				Sleep(10);
+			}
 			numrcv = recv(dstSocket, buffer, 3, 0);
 			cnt += numrcv;
 			if (strcmp(buffer, "MHK") == 0) {
@@ -90,6 +96,9 @@ main() {
 				printf("Number of char: %d\n", cnt);
 			}
 		}
+		clock_t end = clock();
+		time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+		printf("Time excuted: %f seconds\n", time_spent);
 		printf("OK\n");
 	}
 
