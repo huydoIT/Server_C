@@ -30,12 +30,10 @@ void randStr(char result[10], int number)
 }
 int
 main() {
-	/* 郢晄亢繝ｻ郢晁ご蛻・愾・ｷ邵ｲ竏壹◆郢ｧ・ｱ郢昴・繝ｨ */
 	unsigned short port = 9876;
 	int srcSocket;  // 髢ｾ・ｪ陋ｻ繝ｻ
 	int dstSocket;  // 騾ｶ・ｸ隰・・
 
-	/* sockaddr_in 隶堤洸闖ｴ繝ｻ*/
 	struct sockaddr_in srcAddr;
 	struct sockaddr_in dstAddr;
 	int dstAddrSize = sizeof(dstAddr);
@@ -49,7 +47,7 @@ main() {
 	WSADATA data;
 	WSAStartup(MAKEWORD(2, 0), &data);
 
-	/* sockaddr_in 隶堤洸闖ｴ阮吶・郢ｧ・ｻ郢昴・繝ｨ */
+
 	memset(&srcAddr, 0, sizeof(srcAddr));
 	srcAddr.sin_port = htons(port);
 	srcAddr.sin_family = AF_INET;
