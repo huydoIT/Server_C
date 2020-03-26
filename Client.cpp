@@ -30,7 +30,7 @@ int check(char data[BUFFER_SIZE]) {
 
 int
 main() {
-	/* IP アドレス、�Eート番号、ソケチE�� */
+	/* IP アドレス、�Eート番号、ソケチE�� */
 	char destination[80];
 	unsigned short port = 9876;
 	int dstSocket;
@@ -38,7 +38,7 @@ main() {
 	/* sockaddr_in 構造佁E*/
 	struct sockaddr_in dstAddr;
 
-	/* 吁E��パラメータ */
+	/* 吁E��パラメータ */
 	int status;
 	int numsnt;
 	/************************************************************/
@@ -49,23 +49,23 @@ main() {
 	WSADATA data;
 	WSAStartup(MAKEWORD(2, 0), &data);
 
-	/* 相手�Eアドレスの入劁E*/
+	/* 相手�Eアドレスの入劁E*/
 	printf("Connect to ? : (name or IP address) ");
 	scanf("%s", destination);
 
-	/* sockaddr_in 構造体�EセチE�� */
+	/* sockaddr_in 構造体�EセチE�� */
 	memset(&dstAddr, 0, sizeof(dstAddr));
 	dstAddr.sin_port = htons(port);
 	dstAddr.sin_family = AF_INET;
 	dstAddr.sin_addr.s_addr = inet_addr(destination);
 
-	/* ソケチE��生�E */
+	/* ソケチE��生�E */
 	dstSocket = socket(AF_INET, SOCK_STREAM, 0);
 	/* 接綁E*/
 	printf("Trying to connect to %s: \n", destination);
 	connect(dstSocket, (struct sockaddr*) & dstAddr, sizeof(dstAddr));
 
-	/* パケチE��送�E */
+	/* パケチE��送�E */
 	char str[BUFFER_SIZE] = { 0 };
 	char buffer[4] = { 0 };
 	int numrcv;
